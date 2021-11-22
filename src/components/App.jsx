@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import DisplayName from './DisplayName/DisplayName';
 import NamesList from "./NamesList/NamesList";
+import AlertUser from "./AlertUser/AlertUser";
 
 class App extends Component {
     constructor(props) {
@@ -12,6 +13,10 @@ class App extends Component {
         }
     }
 
+    AlertUser(){
+        alert("devCodeCamp");
+    }
+    
     render() { 
         return ( 
             <div className='container-fluid'>
@@ -19,6 +24,7 @@ class App extends Component {
                 <DisplayName firstName={this.state.firstName} />
                 <DisplayName lastName={this.state.lastName} />
                 <NamesList names={this.state.names} />
+                <AlertUser alert={() => this.AlertUser()} />
                 </h1>
             </div>
         );
