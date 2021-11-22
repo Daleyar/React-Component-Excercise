@@ -3,6 +3,7 @@ import DisplayName from './DisplayName/DisplayName';
 import NamesList from "./NamesList/NamesList";
 import AlertUser from "./AlertUser/AlertUser";
 import SuperHeroTable from "./SuperheroTable/SuperheroTable";
+import CreateHero from './SuperHeroCreateForm/SuperHeroCreateForm';
 
 class App extends Component {
     constructor(props) {
@@ -38,16 +39,23 @@ class App extends Component {
         alert("devCodeCamp");
     }
 
+    addSuperHero = (hero) =>{
+        let heroes = this.state.superheroes
+        heroes.push(hero);
+        this.setState({
+            superheroes: heroes
+        });
+    }
+
     render() { 
         return ( 
-            <div className='container-fluid'>
-                <h1>
+            <React.Fragment>
                 <DisplayName firstName={this.state.firstName} lastName={this.state.lastName}/>
                 <NamesList names={this.state.names} />
                 <AlertUser alert={() => this.AlertUser()} />
                 <SuperHeroTable heroes={this.state.superheroes} />
-                </h1>
-            </div>
+                <CreateHero addSuperHero={this.addSuperHero}/>
+            </React.Fragment>
         );
     }
 }
